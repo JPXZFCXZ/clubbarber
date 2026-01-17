@@ -47,6 +47,56 @@
             object-fit: cover;
         }
 
+        /* Carrusel de imágenes */
+        .carousel-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .carousel-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .indicator.active {
+            background: #ffffff;
+        }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -139,6 +189,20 @@
             margin-bottom: 8px;
         }
 
+        .location-link {
+            color: #000000;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #000000;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .location-link:hover {
+            color: #666;
+            border-bottom-color: #666;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -162,12 +226,14 @@
             font-size: 14px;
             color: #999;
             font-weight: 300;
+            overflow: hidden;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: top;
         }
 
         .product-info {
@@ -181,6 +247,174 @@
             color: #333;
         }
 
+        .courses-btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1.5px solid #000000;
+            cursor: pointer;
+        }
+
+        .courses-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .close {
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .course-card {
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 0;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #e0e0e0;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .course-card p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .course-card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .course-card li {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: #333333;
+        }
+
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -191,6 +425,10 @@
         }
 
         @media (min-width: 768px) {
+            .carousel-container {
+                height: 500px;
+            }
+
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -208,6 +446,28 @@
             <img src="logo.jpg" alt="Club Barber Logo">
         </div>
     </header>
+
+    <!-- Carrusel de imágenes -->
+    <div class="carousel-container">
+        <div class="carousel-slide active">
+            <img src="slide1.jpg" alt="Slide 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="slide2.jpg" alt="Slide 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="slide3.jpg" alt="Slide 3">
+        </div>
+        <div class="carousel-slide">
+            <img src="slide4.jpg" alt="Slide 4">
+        </div>
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+        </div>
+    </div>
 
     <div class="container">
         <div class="hero">
@@ -261,7 +521,14 @@
                 <h3>Sobre Club Barber</h3>
                 <p>Distribuidor oficial de productos premium para el cuidado y estilo masculino en Córdoba, Veracruz.</p>
                 <p>Ofrecemos una selección curada de las mejores marcas para barbería profesional y uso personal.</p>
-                <p><strong>Ubicación:</strong> Córdoba, Veracruz, México</p>
+                <p><strong>Ubicación:</strong> <a href="https://maps.google.com/?q=Av.+5+entre+calles+9+y+11,+enfrente+del+Hotel+Layfer,+Córdoba,+Veracruz,+México" target="_blank" class="location-link">Av. 5 entre calles 9 y 11, enfrente del Hotel Layfer, Córdoba, Veracruz, México</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Cursos Disponibles</h2>
+            <div style="text-align: center;">
+                <button class="courses-btn" onclick="openModal()">Ver Cursos</button>
             </div>
         </div>
 
@@ -329,5 +596,119 @@
         <p>© 2025 Club Barber Córdoba</p>
         <p>Productos premium para el cuidado masculino</p>
     </footer>
+
+    <!-- Modal de Cursos -->
+    <div id="coursesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nuestros Cursos</h2>
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="curso-unas.jpg" alt="Curso de Uñas">
+                    </div>
+                    <div class="course-content">
+                        <h3>💅 Curso de Uñas Profesional</h3>
+                        <p><strong>Aprende el arte del cuidado y diseño de uñas</strong></p>
+                        <p>En este curso completo aprenderás:</p>
+                        <ul>
+                            <li>Manicure y pedicure profesional</li>
+                            <li>Aplicación de uñas acrílicas y gel</li>
+                            <li>Diseños y decoración de uñas</li>
+                            <li>Técnicas de esmaltado permanente</li>
+                            <li>Higiene y bioseguridad</li>
+                            <li>Atención al cliente</li>
+                        </ul>
+                        <p><strong>Duración:</strong> 8 semanas</p>
+                        <p><strong>Incluye:</strong> Kit de materiales y certificado</p>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="curso-barberia.jpg" alt="Curso de Barbería">
+                    </div>
+                    <div class="course-content">
+                        <h3>✂️ Curso de Barbería Profesional</h3>
+                        <p><strong>Conviértete en un experto barbero</strong></p>
+                        <p>Domina las técnicas de barbería moderna:</p>
+                        <ul>
+                            <li>Cortes clásicos y modernos</li>
+                            <li>Técnicas de desvanecido (fade)</li>
+                            <li>Diseño y cuidado de barba</li>
+                            <li>Afeitado tradicional con navaja</li>
+                            <li>Uso profesional de herramientas</li>
+                            <li>Tendencias y estilos actuales</li>
+                        </ul>
+                        <p><strong>Duración:</strong> 10 semanas</p>
+                        <p><strong>Incluye:</strong> Kit de herramientas básicas y certificado</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding-top: 10px;">
+                    <p style="font-size: 16px; margin-bottom: 15px;"><strong>¿Interesado en nuestros cursos?</strong></p>
+                    <p style="font-size: 15px; color: #666; margin-bottom: 20px;">Contáctanos por WhatsApp para más información sobre fechas, precios e inscripciones</p>
+                    <button class="back-btn" onclick="closeModal()">Volver al Inicio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carrusel automático
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            currentSlide = (index + totalSlides) % totalSlides;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        // Cambiar slide cada 4 segundos
+        setInterval(nextSlide, 4000);
+
+        // Modal de cursos
+        function openModal() {
+            document.getElementById('coursesModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('coursesModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer click fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('coursesModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
